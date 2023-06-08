@@ -1,19 +1,25 @@
 import './Button.css';
+import { useState } from 'react';
 
-const Button = ({
+export const Button = ({
 	children,
 	color = 'default',
 	size = 'base',
 	backgroundColor,
 }) => {
+	const [message, setMessage] = useState('');
+
+	const handleClick = () => {
+		setMessage('clicked');
+	};
+
 	return (
 		<button
 			className={`${color} ${size}`}
 			style={backgroundColor && { backgroundColor }}
+			onClick={handleClick}
 		>
-			{children}
+			{children} {message}
 		</button>
 	);
 };
-
-export default Button;
